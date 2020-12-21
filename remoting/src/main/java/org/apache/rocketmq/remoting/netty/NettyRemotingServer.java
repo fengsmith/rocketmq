@@ -208,6 +208,8 @@ public class NettyRemotingServer extends NettyRemotingAbstract implements Remoti
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     public void initChannel(SocketChannel ch) throws Exception {
+                        // todo inbound 有 handshake outbound 为啥就没有
+                        // todo ssl 是怎么处理的
                         ch.pipeline()
                             .addLast(defaultEventExecutorGroup, HANDSHAKE_HANDLER_NAME, handshakeHandler)
                             .addLast(defaultEventExecutorGroup,
@@ -401,6 +403,7 @@ public class NettyRemotingServer extends NettyRemotingAbstract implements Remoti
             msg.resetReaderIndex();
 
             try {
+                // todo 为什么要移除呢？
                 // Remove this handler
                 ctx.pipeline().remove(this);
             } catch (NoSuchElementException e) {

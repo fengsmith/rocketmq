@@ -60,7 +60,9 @@ public class MQFaultStrategy {
             try {
                 int index = tpInfo.getSendWhichQueue().getAndIncrement();
                 for (int i = 0; i < tpInfo.getMessageQueueList().size(); i++) {
+                    // todo 为什么要 index++ ？ getAndIncrement 已经加过了
                     int pos = Math.abs(index++) % tpInfo.getMessageQueueList().size();
+                    // TODO 都已经 Math.abs(index++) 绝对值了，也不会出现 pos < 0 的情况了吧？
                     if (pos < 0)
                         pos = 0;
                     MessageQueue mq = tpInfo.getMessageQueueList().get(pos);

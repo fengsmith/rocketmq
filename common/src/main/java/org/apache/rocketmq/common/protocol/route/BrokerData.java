@@ -25,6 +25,7 @@ import org.apache.rocketmq.common.MixAll;
 
 public class BrokerData implements Comparable<BrokerData> {
     private String cluster;
+    // todo 为什么一个 brokerName 会对应多个地址？
     private String brokerName;
     private HashMap<Long/* brokerId */, String/* broker address */> brokerAddrs;
 

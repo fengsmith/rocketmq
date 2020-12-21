@@ -145,7 +145,7 @@ public class BrokerController {
     private final List<ConsumeMessageHook> consumeMessageHookList = new ArrayList<ConsumeMessageHook>();
     private MessageStore messageStore;
     private RemotingServer remotingServer;
-    private RemotingServer fastRemotingServer;
+    private RemotingServer fastRemotingServer;// todo 和 remotingServer 有啥区别？？
     private TopicConfigManager topicConfigManager;
     private ExecutorService sendMessageExecutor;
     private ExecutorService pullMessageExecutor;
@@ -479,6 +479,7 @@ public class BrokerController {
                     log.warn("FileWatchService created error, can't load the certificate dynamically");
                 }
             }
+            // todo 事物消息？
             initialTransaction();
             initialAcl();
             initialRpcHooks();

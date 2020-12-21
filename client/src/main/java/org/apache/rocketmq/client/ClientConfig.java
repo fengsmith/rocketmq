@@ -178,7 +178,9 @@ public class ClientConfig {
     }
 
     public String getNamesrvAddr() {
+        // https 咋办
         if (StringUtils.isNotEmpty(namesrvAddr) && NameServerAddressUtils.NAMESRV_ENDPOINT_PATTERN.matcher(namesrvAddr.trim()).matches()) {
+            // https 咋办
             return namesrvAddr.substring(NameServerAddressUtils.ENDPOINT_PREFIX.length());
         }
         return namesrvAddr;

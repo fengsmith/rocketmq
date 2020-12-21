@@ -236,6 +236,7 @@ public class MQClientInstance {
                     // Start various schedule tasks
                     this.startScheduledTask();
                     // Start pull service
+                    // todo 干啥的？ consumer 会用到，producer、consumer 都会有 MQClientInstance 类。那么 Producer 用它干啥呢？
                     this.pullMessageService.start();
                     // Start rebalance service
                     this.rebalanceService.start();

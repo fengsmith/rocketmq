@@ -573,6 +573,7 @@ public class DefaultMQProducerImpl implements MQProducerInner {
                         beginTimestampPrev = System.currentTimeMillis();
                         if (times > 0) {
                             //Reset topic with namespace during resend.
+                            // todo 为什么？？？
                             msg.setTopic(this.defaultMQProducer.withNamespace(msg.getTopic()));
                         }
                         long costTime = beginTimestampPrev - beginTimestampFirst;

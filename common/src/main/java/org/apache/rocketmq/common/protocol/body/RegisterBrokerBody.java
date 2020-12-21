@@ -42,6 +42,7 @@ public class RegisterBrokerBody extends RemotingSerializable {
 
     private static final InternalLogger LOGGER = InternalLoggerFactory.getLogger(LoggerName.COMMON_LOGGER_NAME);
     private TopicConfigSerializeWrapper topicConfigSerializeWrapper = new TopicConfigSerializeWrapper();
+    // todo 干啥用的，什么场景下会用？
     private List<String> filterServerList = new ArrayList<String>();
 
     public byte[] encode(boolean compress) {

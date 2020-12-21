@@ -236,6 +236,7 @@ public abstract class NettyRemotingAbstract {
                             final RemotingCommand response = RemotingCommand.createResponseCommand(RemotingSysResponseCode.SYSTEM_ERROR,
                                 RemotingHelper.exceptionSimpleDesc(e));
                             response.setOpaque(opaque);
+                            // todo 是怎么写入请求响应的？
                             ctx.writeAndFlush(response);
                         }
                     }
@@ -254,6 +255,7 @@ public abstract class NettyRemotingAbstract {
                 final RequestTask requestTask = new RequestTask(run, ctx.channel(), cmd);
                 pair.getObject2().submit(requestTask);
             } catch (RejectedExecutionException e) {
+                // todo 这行代码什么意思，只需要打 万分之一的日志？防止打的日志太多了？
                 if ((System.currentTimeMillis() % 10000) == 0) {
                     log.warn(RemotingHelper.parseChannelRemoteAddr(ctx.channel())
                         + ", too many requests and system thread pool busy, RejectedExecutionException "

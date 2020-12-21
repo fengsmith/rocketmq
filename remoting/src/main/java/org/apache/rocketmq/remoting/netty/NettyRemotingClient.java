@@ -429,6 +429,7 @@ public class NettyRemotingClient extends NettyRemotingAbstract implements Remoti
                 }
 
                 if (addrList != null && !addrList.isEmpty()) {
+                    // 随机选一个 namesrv 地址
                     for (int i = 0; i < addrList.size(); i++) {
                         int index = this.namesrvIndex.incrementAndGet();
                         index = Math.abs(index);

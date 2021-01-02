@@ -15,6 +15,14 @@ java.lang.Exception: Stack trace
 
 Producer -> DefaultMQProducer -> DefaultMQProducerImpl -> MQClientInstance -> NettyRemotingClient 
 
+1. 根据 topic 查找 TopicPublishInfo 。
+2. 选择一个 MessageQueue 。
+3. 查找合适的 broker 地址。
+4. 如果需要压缩消息的话则压缩消息。
+5. 如果有发送消息之前需要执行的 hook 的话，则执行发送之前的 hook 。
+6. 分为同步（oneWay、同步）、异步。
+7. 发送消息。
+8. 如果有发送消息之后需要执行的 hook 的话，则执行发送之后的 hook 。
 
 
 
